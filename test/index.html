@@ -9,10 +9,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lukaid</title>
   <!--타이틀은 HTML 제목, 탭에 써있는 내용 -->
-  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="css/main.css">
   <!--링크는 외부의 파일(주로 css)을 가져올때 사용 -->
   <!--rel은 html과의 관계, href는 주소 및 파일명 -->
-  <script src="./js/main.js"></script>
+  <script src="js/main.js"></script>
   <!--얘도 마찬가지로 src로 외부에서 가져올수도 있고 스타일태그처럼 js 문법을 작성 가능 -->
   <style>
     div {
@@ -23,12 +23,24 @@
 </head>
 
 <body>
-  <div>Hello World!</div>
-  <img src="./images/logo.png" alt="HEROPY"> <!--alt는 필수태그, 이미지를 못 불러 올때 어떤 문자를 띄울지-->
-  <img src="https://heropy.blog/css/images/logo.png" alt="HEROPY">
+  <a href="https://naver.com">NAVER</a>
+  <a href="/about">About</a> <!-- index를 먼저 찾으니까 굳이 안써줘도 되는 부분-->
+  <a href="/login">Login</a>
 </body>
 
 </html>
 
+<!--브라우저는 이름이 index인 html파일을 자동으로 찾음-->
 <!--index.html은 폴더로 정리하면 안됨-->
 <!--index.html은 가장 상위 경로(Root path)에 존재해야 함-->
+
+
+<!-- ./는 현재 폴더(생략가능), ../는 상위 폴더(하나 위로 올라가서 찾아나감)-->
+<!-- http는 절대 경로, /는 최상위 경로로 올라가서 찾아 나감
+<img src="https://heropy.blog/css/images/logo.png" alt="HEROPY"> 이런식으로 소스에 아예 링크를 걸어 버릴수도 있음
+  <img src="/images/logo.png" alt="HEROPY"> alt는 필수태그, 이미지를 못 불러 올때 어떤 문자를 띄울지-->
+
+<!-- localhost는 내 컴퓨터의 로컬환경-->
+
+<!-- 어떠한 내용을 선택해서 페이지가 이동한다면 거의 대부분 a태그
+  a 태그는 href에 링크를 걸고 사이에 클릭시 이동가능한거 넣음 -->
