@@ -1,3 +1,40 @@
-div {
-  color: red;
+/* div {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+} */
+
+/* .box::before {
+  content: '가상요소선택자는 content와 항상 세트';
+}
+
+.box::after {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-color: royalblue;
+} 
+
+[type = "password"] {
+  color: rebeccapurple
+}
+
+[data-fruit-name] {
+  background-color: rgb(150, 127, 255);
+} */
+
+.box {
+  width: 300px;
+  height: 200px;
+  background-color: blue
+}
+
+.unbox {
+  width: 100px;
+  height: inherit;
+  background-color: inherit;
+  position: fixed;
+  top: 100px;
+  right: 10px;
 }
