@@ -27,3 +27,15 @@ position: absolute와 fixed는 display가 자동으로 block으로 변함
 
 const searchEl = document.querySelector('.search');
 에서 document는 HTML
+
+BEM (Block Element Modifier) - HTML 클래스 속성 작명법
+요소__일부분: __로 요소의 일부분을 표시
+요소--상태: --로 요소의 상태를 표시
+
+
+document 는 HTML
+window는 브라우저 창, 보고있는 화면 자체
+
+
+부모요소에 높이값이 지정된게 없다면 높이는 최대한 줄어들려고 함
+이때 자식요소에 높이값이 지정되어 있다면 그만큼만 줄어듬
