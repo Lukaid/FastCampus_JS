@@ -39,3 +39,61 @@ window는 브라우저 창, 보고있는 화면 자체
 
 부모요소에 높이값이 지정된게 없다면 높이는 최대한 줄어들려고 함
 이때 자식요소에 높이값이 지정되어 있다면 그만큼만 줄어듬
+
+new Swiper();는 js의 생성자 (클래스)
+
+
+요소를 정 가운데 놓고 싶을 때
+  left: 50%;
+  margin-left: -요소의 가로 크기 / 2;
+
+
+
+.notice .promotion .swiper-prev,
+.notice .promotion .swiper-next {}
+다중선택자
+
+
+가로 세로 사이즈를 비유로 넣고 싶을 때 스킬
+
+.container {
+  width: 1000px;
+}
+
+.container .item {
+  width: 100%;
+  height: 0;
+  padding-top: 50%;
+}
+
+이렇게 하면 부모의 height가 없어서 세로는 0
+자식도 0
+근데 padding-top이 50%이라 가로의 50%비율로 세로가 지정됨
+
+근데 이거 할라고 굳이 item을 HTML에 만들지 않아도 됨
+
+.youtube .youtube__area {
+  width: 1920px;
+  background-color: orange;
+}
+
+.youtube .youtube__area::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0;
+  padding-top: 56.25%;
+}
+
+이렇게 가상클래스를 만들어 주고 block으로 만들어 준 다음에 자식 요소처럼 사용하면 됨
+
+
+.pick-your-favorite {
+  background-image: url(../images/favorite_bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+뷰포트에 고정된 백그라운드, 패럴랙스
