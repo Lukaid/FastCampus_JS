@@ -232,7 +232,63 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // 반복문 
 // for (시작조건; 종료조건; 변화조건) {}
 // 종료조건이 false면 종료, while문 같은건가?
-for (var i = 0; i < 3; i += 1) {}
+// const ulEl = document.querySelector('ul')
+// for (let i = 0; i < 10; i += 1) {
+//   const li = document.createElement('li')
+//   li.textContent = `list-${i + 1}`
+//   if (i % 2 === 1) {
+//     li.addEventListener('click', function () {
+//       console.log(li.textContent)
+//     })
+//   }
+//   ulEl.appendChild(li)
+// }
+// 변수 유효범위 (Variable Scope)
+// var 함수레벨의 유효범위, let, const 블록레벨의 유효범위
+// 블록레벨의 유효범위를 만드는 것이 더 효과적임
+// function scope() {
+//   if (true) {
+//     var a = 123
+//   }
+//   console.log(a)
+// }
+// scope()
+// 형 변환
+// == 는 동등연산자, 형변환이 일어남, 안쓰는 것을 권장함
+// const a = 1
+// const b = '1'
+// console.log(a == b)
+// Truthy(참 같은 값)
+// true, {}, [], 1, 2, 'false', -12, '3.14' ...
+// Falsy(거짓 같은 값)
+// false, '', null, undefined, 0, -0, NaN
+// if (1) {
+//   console.log(123)
+// }
+// 함수 복습
+// return후 함수 종료
+// 함수 선언, 기명함수
+function sum(x, y) {
+  return x + y;
+} //함수 표현, 익명함수
+
+
+var sum_2 = function sum_2(x, y) {
+  return x + y;
+};
+
+console.log(sum(1, 3) + sum(4, 12));
+var a = sum(1, 3);
+var b = sum(4, 12);
+console.log(a + b);
+console.log(sum_2(1, 2));
+
+function test() {
+  console.log(arguments);
+  return arguments[0] + arguments[1];
+}
+
+console.log(test(7, 3));
 },{"./getType":"getType.js","./getRandom":"getRandom.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -261,7 +317,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55265" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55802" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
