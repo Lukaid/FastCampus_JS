@@ -1,5 +1,5 @@
-import getType from './getType'
-import getRandom from './getRandom'
+// import getType from './getType'
+// import getRandom from './getRandom'
 
 // console.log(typeof "Hello World")
 // console.log(typeof 123)
@@ -166,27 +166,105 @@ import getRandom from './getRandom'
 // 함수 복습
 // return후 함수 종료
 // 함수 선언, 기명함수
-function sum(x, y) {
-  return x + y
-} 
+// function sum(x, y) {
+//   return x + y
+// } 
 
-//함수 표현, 익명함수
-const sum_2 = function (x, y) {
-  return x + y
-} 
+// //함수 표현, 익명함수
+// const sum_2 = function (x, y) {
+//   return x + y
+// } 
 
-console.log(sum(1, 3) + sum(4, 12))
+// console.log(sum(1, 3) + sum(4, 12))
 
-const a = sum(1, 3)
-const b = sum(4, 12)
+// const a = sum(1, 3)
+// const b = sum(4, 12)
 
-console.log(a + b)
+// console.log(a + b)
 
-console.log(sum_2(1, 2))
+// console.log(sum_2(1, 2))
 
-function test() {
-  console.log(arguments)
-  return arguments[0] + arguments[1]
-} 
+// function test() {
+//   console.log(arguments)
+//   return arguments[0] + arguments[1]
+// } 
 
-console.log(test(7, 3))
+// console.log(test(7, 3))
+
+
+// 화살표 함수
+// () => {} vs function () {}
+
+// const double = function (x) {
+//   return x * 2
+// }
+// console.log('double: ', double(7))
+
+// const doubleArrow = (x, y) => x * 2 + y
+// console.log('doubleArrow: ', doubleArrow(7, 2))
+
+// 즉시 실행 함수
+// IIFE, Immediately-Invoked Function Expression
+
+// const a = 7
+// function double() {
+//   console.log(a*2)
+// }
+
+// double();
+
+// // (function) ()
+// (function () {
+//   console.log(a*2)
+// }) ();
+
+// // (function () ) 권장
+// (function () {
+//   console.log(a*2)
+// } () );
+
+// 호이스팅 (Hoisting)
+// 함수 선언부가 유효범위 최상단으로 끌어올려지는 현상
+// 걍 함수먼저 읽고 나머지 읽는듯
+
+// const a = 7
+
+// double()
+
+// function double () {
+//   console.log(a*2)
+// }
+
+// 타이머함수
+// setTimeout(함수, 시간): 일정 시간 후 함수 실행, ms
+// setInterval(함수, 시간): 시간 간격마다 함수 실행
+// clearTimeout(): 설정된 Timeout 함수를 종료
+// clearInterval(): 설정된 Interval 함수를 종료
+
+// const timer = setInterval(() => {
+//   console.log('Lukaid')
+// }, 1000)
+
+// const h1El = document.querySelector('h1')
+// h1El.addEventListener('click', () => {
+//   clearInterval(timer)
+// })
+
+
+// 콜백
+// 함수의 인수로 사용되는 함수
+
+// setTimeout(함수, 시간)
+
+// function timeout(callback) {
+//   setTimeout(() => {
+//     console.log('Lukaid!')
+//     callback()
+//   }, 3000)
+// }
+
+// timeout(()=>{
+//   console.log('Done!')
+// })
+
+
