@@ -313,15 +313,15 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 //   console.log('Done!')
 // })
 // 생성자 함수
-var lukaid = {
-  firstName: 'SeongWoo',
-  lastName: 'Lee',
-  getFullName: function getFullName() {
-    return "".concat(this.firstName, " ").concat(this.lastName);
-  }
-};
-console.log(lukaid);
-},{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+// const lukaid = {
+//   firstName: 'SeongWoo',
+//   lastName: 'Lee',
+//   getFullName: function () {
+//     return `${this.firstName} ${this.lastName}`
+//   }
+// }
+// console.log(lukaid)
+},{}],"../../.nvm/versions/node/v14.17.1/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -349,7 +349,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50763" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51099" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -525,5 +525,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","main.js"], null)
+},{}]},{},["../../.nvm/versions/node/v14.17.1/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","main.js"], null)
 //# sourceMappingURL=/main.1f19ae8e.js.map

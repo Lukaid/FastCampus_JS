@@ -270,12 +270,12 @@
 
 // 생성자 함수
 
-const lukaid = {
-  firstName: 'SeongWoo',
-  lastName: 'Lee',
-  getFullName: function () {
-    return `${this.firstName} ${this.lastName}`
-  }
-}
+// const lukaid = {
+//   firstName: 'SeongWoo',
+//   lastName: 'Lee',
+//   getFullName: function () {
+//     return `${this.firstName} ${this.lastName}`
+//   }
+// }
 
-console.log(lukaid)
+// console.log(lukaid)
