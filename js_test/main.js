@@ -218,7 +218,7 @@
 //   console.log(a*2)
 // }) ();
 
-// // (function () ) 권장
+// (function () ) 권장
 // (function () {
 //   console.log(a*2)
 // } () );
@@ -226,6 +226,7 @@
 // 호이스팅 (Hoisting)
 // 함수 선언부가 유효범위 최상단으로 끌어올려지는 현상
 // 걍 함수먼저 읽고 나머지 읽는듯
+// 익명함수(함수표현)으로는 이거 불가
 
 // const a = 7
 
@@ -269,6 +270,10 @@
 
 
 // 생성자 함수
+// 객체 데이터의 구조
+// firstName: 'SeongWoo', -> property
+// function이 드가 있으면 method
+// 얘네를 통틀어 member라고 함
 
 // const lukaid = {
 //   firstName: 'SeongWoo',
@@ -278,4 +283,33 @@
 //   }
 // }
 
-// console.log(lukaid)
+// console.log(lukaid.getFullName())
+
+// const amy = {
+//   firstName: 'Amy',
+//   lastName: 'Clarke',
+//   getFullName: function () {
+//     return `${this.firstName} ${this.lastName}`
+//   }
+// }
+
+// console.log(amy.getFullName())
+
+// 객체 데이터가 생성되는 생성자 함수, 생성자 함수는 pascal case로 작성
+function User(first, last) {
+  this.firstName = first
+  this.lastName = last
+}
+User.prototype.getFullName = function () {
+  return `${this.firstName} ${this.lastName}`
+}
+
+const lukaid = new User('SeongWoo', 'Lee')
+const Amy = new User('Amy', 'Clarke')
+const Neo = new User('Neo', 'Smith')
+
+// const lukaid(인스턴스) = new User('SeongWoo', 'Lee')
+
+console.log(lukaid.getFullName())
+console.log(Amy.getFullName())
+console.log(Neo.getFullName())
