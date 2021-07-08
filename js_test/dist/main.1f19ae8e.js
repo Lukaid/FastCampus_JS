@@ -118,6 +118,8 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"main.js":[function(require,module,exports) {
+var _this = this;
+
 // import getType from './getType'
 // import getRandom from './getRandom'
 // console.log(typeof "Hello World")
@@ -335,22 +337,43 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 // }
 // console.log(amy.getFullName())
 // 객체 데이터가 생성되는 생성자 함수, 생성자 함수는 pascal case로 작성
-function User(first, last) {
-  this.firstName = first;
-  this.lastName = last;
-}
-
-User.prototype.getFullName = function () {
-  return "".concat(this.firstName, " ").concat(this.lastName);
+// function User(first, last) {
+//   this.firstName = first
+//   this.lastName = last
+// }
+// User.prototype.getFullName = function () {
+//   return `${this.firstName} ${this.lastName}`
+// }
+// const lukaid = new User('SeongWoo', 'Lee')
+// const Amy = new User('Amy', 'Clarke')
+// const Neo = new User('Neo', 'Smith')
+// // const lukaid(인스턴스) = new User('SeongWoo', 'Lee')
+// console.log(lukaid.getFullName())
+// console.log(Amy.getFullName())
+// console.log(Neo.getFullName())
+// this
+// 일반(normal) 함수는 호출 위치에서 따라 this 정의!
+// 화살표(arrow) 함수는 자신이 선언된 함수 범위에서 this 정의!
+var lukaid = {
+  name: 'SeongWoo',
+  normal: function normal() {
+    console.log(this.name);
+  },
+  arrow: function arrow() {
+    console.log(_this.name);
+  }
 };
+lukaid.normal(); // 메소드 호출
 
-var lukaid = new User('SeongWoo', 'Lee');
-var Amy = new User('Amy', 'Clarke');
-var Neo = new User('Neo', 'Smith'); // const lukaid(인스턴스) = new User('SeongWoo', 'Lee')
-
-console.log(lukaid.getFullName());
-console.log(Amy.getFullName());
-console.log(Neo.getFullName());
+lukaid.arrow();
+var amy = {
+  name: 'Amy',
+  normal: lukaid.normal,
+  // 함수 할당이라 괄호 안침..
+  arrow: lukaid.arrow
+};
+amy.normal();
+amy.arrow();
 },{}],"../../.nvm/versions/node/v14.17.1/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -379,7 +402,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51146" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55214" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

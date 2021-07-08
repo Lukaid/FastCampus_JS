@@ -296,20 +296,61 @@
 // console.log(amy.getFullName())
 
 // 객체 데이터가 생성되는 생성자 함수, 생성자 함수는 pascal case로 작성
-function User(first, last) {
-  this.firstName = first
-  this.lastName = last
+// function User(first, last) {
+//   this.firstName = first
+//   this.lastName = last
+// }
+// User.prototype.getFullName = function () {
+//   return `${this.firstName} ${this.lastName}`
+// }
+
+// const lukaid = new User('SeongWoo', 'Lee')
+// const Amy = new User('Amy', 'Clarke')
+// const Neo = new User('Neo', 'Smith')
+
+// // const lukaid(인스턴스) = new User('SeongWoo', 'Lee')
+
+// console.log(lukaid.getFullName())
+// console.log(Amy.getFullName())
+// console.log(Neo.getFullName())
+
+// this
+// 일반(normal) 함수는 호출 위치에서 따라 this 정의!
+// 화살표(arrow) 함수는 자신이 선언된 함수 범위에서 this 정의!
+
+const lukaid = {
+  name: 'SeongWoo',
+  normal: function () {
+    console.log(this.name)
+  },
+  arrow: () => {
+    console.log(this.name)
+  }
 }
-User.prototype.getFullName = function () {
-  return `${this.firstName} ${this.lastName}`
+lukaid.normal() // 메소드 호출
+lukaid.arrow()
+
+const amy = {
+  name: 'Amy',
+  normal: lukaid.normal,  // 함수 할당이라 괄호 안침..
+  arrow: lukaid.arrow
 }
 
-const lukaid = new User('SeongWoo', 'Lee')
-const Amy = new User('Amy', 'Clarke')
-const Neo = new User('Neo', 'Smith')
+amy.normal()
+amy.arrow()
 
-// const lukaid(인스턴스) = new User('SeongWoo', 'Lee')
+function User(name) {
+  this.name = name
+}
 
-console.log(lukaid.getFullName())
-console.log(Amy.getFullName())
-console.log(Neo.getFullName())
+User.prototype.normal = function () {
+  console.log(this.name)
+}
+User.prototype.arrow = () => {
+  console.log(this.name)
+}
+
+const lukaid = new User('lukaid')
+
+lukaid.normal()
+lukaid.arrow()
