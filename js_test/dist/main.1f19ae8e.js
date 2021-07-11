@@ -118,7 +118,23 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"main.js":[function(require,module,exports) {
-var _this = this;
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 // import getType from './getType'
 // import getRandom from './getRandom'
@@ -354,27 +370,124 @@ var _this = this;
 // this
 // 일반(normal) 함수는 호출 위치에서 따라 this 정의!
 // 화살표(arrow) 함수는 자신이 선언된 함수 범위에서 this 정의!
-var lukaid = {
-  name: 'SeongWoo',
-  normal: function normal() {
-    console.log(this.name);
-  },
-  arrow: function arrow() {
-    console.log(_this.name);
-  }
-};
-lukaid.normal(); // 메소드 호출
+// const lukaid = {
+//   name: 'SeongWoo',
+//   normal: function () {  : function 생략가능
+//     console.log(this.name)
+//   },
+//   arrow: () => {
+//     console.log(this.name)
+//   }
+// }
+// lukaid.normal() // 메소드 호출
+// lukaid.arrow()
+// const amy = {
+//   name: 'Amy',
+//   normal: lukaid.normal,  // 함수 할당이라 괄호 안침..
+//   arrow: lukaid.arrow
+// }
+// amy.normal()
+// amy.arrow()
+// pascal case 함수이니 생성자 함수 일 것
+// function User(name) {
+//   this.name = name
+// }
+// User.prototype.normal = function () {
+//   console.log(this.name)
+// }
+// User.prototype.arrow = () => {
+//   console.log(this.name)
+// }
+// const lukaid = new User('lukaid')
+// lukaid.normal()
+// lukaid.arrow()
+// const timer = {
+//   name: 'lukaid!!',
+//   timeout: function () {
+//     // setTimeout(function () {
+//     //   console.log(this.name)
+//     // }, 2000)
+//     setTimeout(() => {
+//       console.log(this.name)
+//     }, 2000)
+//   }
+// }
+// timer.timeout()
+// ES6 Classes (파이썬의 그것과 비슷)
+// function User(first, last) {
+//   this.firstName = first,
+//   this.lastName = last
+// }
+// User.prototype.getFullName = function () {
+//   return `${this.firstName} ${this.lastName}`
+// }
+// class User {
+//   constructor(first, last) {
+//     this.firstName = first,
+//     this.lastName = last
+//   }
+//   getFullName() {
+//     return `${this.firstName} ${this.lastName}`
+//   }
+// }
+// const lukaid = new User('SeongWoo', 'lee')
+// const amy = new User('A', 'B')
+// const neo = new User('C', 'D')
+// console.log(lukaid)
+// console.log(amy.getFullName())
+// console.log(neo.getFullName())
+var Vehicle = function Vehicle(name, wheel) {
+  _classCallCheck(this, Vehicle);
 
-lukaid.arrow();
-var amy = {
-  name: 'Amy',
-  normal: lukaid.normal,
-  // 함수 할당이라 괄호 안침..
-  arrow: lukaid.arrow
+  this.name = name;
+  this.wheel = wheel;
 };
-amy.normal();
-amy.arrow();
-},{}],"../../.nvm/versions/node/v14.17.1/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+var myVehicle = new Vehicle('운송수단', 2);
+console.log(myVehicle);
+
+var Bicycle = /*#__PURE__*/function (_Vehicle) {
+  _inherits(Bicycle, _Vehicle);
+
+  var _super = _createSuper(Bicycle);
+
+  function Bicycle(name, wheel) {
+    _classCallCheck(this, Bicycle);
+
+    return _super.call(this, name, wheel);
+  }
+
+  return Bicycle;
+}(Vehicle);
+
+var myBicycle = new Bicycle('삼천리', 2);
+var daughtersBicycle = new Bicycle('세발자전거', 3);
+console.log(myBicycle);
+console.log(daughtersBicycle);
+
+var Car = /*#__PURE__*/function (_Vehicle2) {
+  _inherits(Car, _Vehicle2);
+
+  var _super2 = _createSuper(Car);
+
+  function Car(name, wheel, license) {
+    var _this;
+
+    _classCallCheck(this, Car);
+
+    _this = _super2.call(this, name, wheel);
+    _this.license = license;
+    return _this;
+  }
+
+  return Car;
+}(Vehicle);
+
+var myCar = new Car('벤쓰', 4, '2종 보통');
+var daughtersCar = new Car('포르쉐', 4, false);
+console.log(myCar);
+console.log(daughtersCar);
+},{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -402,7 +515,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55214" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64522" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -578,5 +691,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../.nvm/versions/node/v14.17.1/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","main.js"], null)
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","main.js"], null)
 //# sourceMappingURL=/main.1f19ae8e.js.map

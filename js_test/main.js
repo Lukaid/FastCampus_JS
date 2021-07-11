@@ -318,39 +318,116 @@
 // 일반(normal) 함수는 호출 위치에서 따라 this 정의!
 // 화살표(arrow) 함수는 자신이 선언된 함수 범위에서 this 정의!
 
-const lukaid = {
-  name: 'SeongWoo',
-  normal: function () {
-    console.log(this.name)
-  },
-  arrow: () => {
-    console.log(this.name)
+// const lukaid = {
+//   name: 'SeongWoo',
+//   normal: function () {  : function 생략가능
+//     console.log(this.name)
+//   },
+//   arrow: () => {
+//     console.log(this.name)
+//   }
+// }
+// lukaid.normal() // 메소드 호출
+// lukaid.arrow()
+
+// const amy = {
+//   name: 'Amy',
+//   normal: lukaid.normal,  // 함수 할당이라 괄호 안침..
+//   arrow: lukaid.arrow
+// }
+
+// amy.normal()
+// amy.arrow()
+
+// pascal case 함수이니 생성자 함수 일 것
+// function User(name) {
+//   this.name = name
+// }
+
+// User.prototype.normal = function () {
+//   console.log(this.name)
+// }
+// User.prototype.arrow = () => {
+//   console.log(this.name)
+// }
+
+// const lukaid = new User('lukaid')
+
+// lukaid.normal()
+// lukaid.arrow()
+
+// const timer = {
+//   name: 'lukaid!!',
+//   timeout: function () {
+//     // setTimeout(function () {
+//     //   console.log(this.name)
+//     // }, 2000)
+
+//     setTimeout(() => {
+//       console.log(this.name)
+//     }, 2000)
+
+//   }
+// }
+// timer.timeout()
+
+
+// ES6 Classes (파이썬의 그것과 비슷)
+
+// function User(first, last) {
+//   this.firstName = first,
+//   this.lastName = last
+// }
+
+// User.prototype.getFullName = function () {
+//   return `${this.firstName} ${this.lastName}`
+// }
+
+// class User {
+//   constructor(first, last) {
+//     this.firstName = first,
+//     this.lastName = last
+//   }
+//   getFullName() {
+//     return `${this.firstName} ${this.lastName}`
+//   }
+// }
+
+// const lukaid = new User('SeongWoo', 'lee')
+// const amy = new User('A', 'B')
+// const neo = new User('C', 'D')
+
+// console.log(lukaid)
+// console.log(amy.getFullName())
+// console.log(neo.getFullName())
+
+
+class Vehicle {
+  constructor(name, wheel) {
+    this.name = name
+    this.wheel = wheel
   }
 }
-lukaid.normal() // 메소드 호출
-lukaid.arrow()
+const myVehicle = new Vehicle('운송수단', 2)
+console.log(myVehicle)
 
-const amy = {
-  name: 'Amy',
-  normal: lukaid.normal,  // 함수 할당이라 괄호 안침..
-  arrow: lukaid.arrow
+class Bicycle extends Vehicle {
+  constructor(name, wheel) {
+    super(name, wheel)
+  }
 }
+const myBicycle = new Bicycle('삼천리', 2)
+const daughtersBicycle = new Bicycle('세발자전거', 3)
+console.log(myBicycle)
+console.log(daughtersBicycle)
 
-amy.normal()
-amy.arrow()
-
-function User(name) {
-  this.name = name
+class Car extends Vehicle {
+  constructor(name, wheel, license) {
+    super(name, wheel)
+    this.license = license
+  }
 }
-
-User.prototype.normal = function () {
-  console.log(this.name)
-}
-User.prototype.arrow = () => {
-  console.log(this.name)
-}
-
-const lukaid = new User('lukaid')
-
-lukaid.normal()
-lukaid.arrow()
+const myCar = new Car('벤쓰', 4, '2종 보통')
+const daughtersCar = new Car('포르쉐', 4, false)
+console.log(myCar)
+console.log(daughtersCar)
