@@ -208,50 +208,60 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 // console.log(numbers)
 // prototype 이 없는 method 는 정적(static) 메소드
 // {}.assign() 이렇게 사용 불가
-var userAge = {
-  // key: value
-  name: 'Lukaid',
-  age: 29
-};
-var userEmail = {
-  name: 'Lukaid',
-  email: 'dltjddn0115@naver.com'
-}; // userAge.assign() 이렇게 사용 불가, prototype이 아님
+// const userAge = {
+//     // key: value
+//     name: 'Lukaid',
+//     age: 29
+// }
+// const userEmail = {
+//     name: 'Lukaid',
+//     email: 'dltjddn0115@naver.com'
+// }
+// userAge.assign() 이렇게 사용 불가, prototype이 아님
 // const target = Object.assign(userAge, userEmail)
 // console.log(target)
 // console.log(userAge)
 // console.log(target === userAge) // userAge를 반환한 것이 target, 두 변수 모두 같은 메모리 주소를 가르킴
 // 첫번째 인수에 빈 객체를 넣으면 원본 객체는 유지됨
-
-var target = Object.assign({}, userAge, userEmail);
-console.log(target);
-console.log(userAge);
-console.log(target === userAge); // userAge를 반환한 것이 target, 두 변수 모두 같은 메모리 주소를 가르킴
-
-var a = {
-  k: 123
-};
-var b = {
-  k: 123
-};
-console.log(a === b); // 내용이 같아도, 다른 객체임, 메모리 주소가 다름
-
-var c = '1';
-var d = '1';
-console.log(c === d);
+// const target = Object.assign({}, userAge, userEmail)
+// console.log(target)
+// console.log(userAge)
+// console.log(target === userAge) // userAge를 반환한 것이 target, 두 변수 모두 같은 메모리 주소를 가르킴
+// const a = { k:123 }
+// const b = { k:123 }
+// console.log(a === b) // 내용이 같아도, 다른 객체임, 메모리 주소가 다름
+// const c = '1'
+// const d = '1'
+// console.log(c === d)
 var user = {
   // key: value
   name: 'Lukaid',
   age: 29,
   email: 'dltjddn0115@naver.com'
-};
-var keys = Object.keys(user);
-console.log(keys);
-console.log(user['email']);
-var values = keys.map(function (key) {
-  return user[key];
-});
-console.log(values);
+}; // const keys = Object.keys(user)
+// console.log(keys)
+// console.log(user['email'])
+// const values = keys.map(key => user[key])
+// console.log(values)
+// 구조 분해 할당
+
+var lukaid = user.name,
+    age = user.age,
+    _user$address = user.address,
+    address = _user$address === void 0 ? 'korea' : _user$address; // 객체 데이터에서 내가 원하는 value만 key로 꺼내 묵으면 됨
+
+console.log("\uC0AC\uC6A9\uC790\uC758 \uC774\uB984\uC740 ".concat(lukaid, "\uC785\uB2C8\uB2E4."));
+console.log("".concat(lukaid, "\uC758 \uB098\uC774\uB294 ").concat(age, "\uC138 \uC785\uB2C8\uB2E4."));
+console.log("".concat(lukaid, "\uC758 \uC774\uBA54\uC77C \uC8FC\uC18C\uB294 ").concat(user.email, "\uC785\uB2C8\uB2E4."));
+console.log(address); // 객체 데이터 뿐 아니라 배열 데이터에도 사용 가능
+// 배열은 순서를 꼭 지켜야 됨
+
+var fruits = ['Apple', 'Banana', 'Cherry'];
+var a = fruits[0],
+    b = fruits[1],
+    c = fruits[2],
+    d = fruits[3];
+console.log(a, b, c, d);
 },{}],"../../.nvm/versions/node/v14.17.1/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -280,7 +290,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54654" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65387" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

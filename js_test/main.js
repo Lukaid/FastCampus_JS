@@ -128,15 +128,15 @@
 // prototype 이 없는 method 는 정적(static) 메소드
 // {}.assign() 이렇게 사용 불가
 
-const userAge = {
-    // key: value
-    name: 'Lukaid',
-    age: 29
-}
-const userEmail = {
-    name: 'Lukaid',
-    email: 'dltjddn0115@naver.com'
-}
+// const userAge = {
+//     // key: value
+//     name: 'Lukaid',
+//     age: 29
+// }
+// const userEmail = {
+//     name: 'Lukaid',
+//     email: 'dltjddn0115@naver.com'
+// }
 
 // userAge.assign() 이렇게 사용 불가, prototype이 아님
 // const target = Object.assign(userAge, userEmail)
@@ -145,20 +145,20 @@ const userEmail = {
 // console.log(target === userAge) // userAge를 반환한 것이 target, 두 변수 모두 같은 메모리 주소를 가르킴
 
 // 첫번째 인수에 빈 객체를 넣으면 원본 객체는 유지됨
-const target = Object.assign({}, userAge, userEmail)
-console.log(target)
-console.log(userAge)
-console.log(target === userAge) // userAge를 반환한 것이 target, 두 변수 모두 같은 메모리 주소를 가르킴
+// const target = Object.assign({}, userAge, userEmail)
+// console.log(target)
+// console.log(userAge)
+// console.log(target === userAge) // userAge를 반환한 것이 target, 두 변수 모두 같은 메모리 주소를 가르킴
 
 
 
-const a = { k:123 }
-const b = { k:123 }
-console.log(a === b) // 내용이 같아도, 다른 객체임, 메모리 주소가 다름
+// const a = { k:123 }
+// const b = { k:123 }
+// console.log(a === b) // 내용이 같아도, 다른 객체임, 메모리 주소가 다름
 
-const c = '1'
-const d = '1'
-console.log(c === d)
+// const c = '1'
+// const d = '1'
+// console.log(c === d)
 
 
 const user = {
@@ -168,10 +168,25 @@ const user = {
     email: 'dltjddn0115@naver.com'
 }
 
-const keys = Object.keys(user)
-console.log(keys)
+// const keys = Object.keys(user)
+// console.log(keys)
 
-console.log(user['email'])
+// console.log(user['email'])
 
-const values = keys.map(key => user[key])
-console.log(values)
+// const values = keys.map(key => user[key])
+// console.log(values)
+
+// 구조 분해 할당
+const { name: lukaid, age, address = 'korea'} = user
+// 객체 데이터에서 내가 원하는 value만 key로 꺼내 묵으면 됨
+
+console.log(`사용자의 이름은 ${lukaid}입니다.`)
+console.log(`${lukaid}의 나이는 ${age}세 입니다.`)
+console.log(`${lukaid}의 이메일 주소는 ${user.email}입니다.`)
+console.log(address)
+
+// 객체 데이터 뿐 아니라 배열 데이터에도 사용 가능
+// 배열은 순서를 꼭 지켜야 됨
+const fruits = ['Apple', 'Banana', 'Cherry']
+const [a, b, c, d] = fruits
+console.log(a, b, c, d)
