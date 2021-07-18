@@ -161,12 +161,12 @@
 // console.log(c === d)
 
 
-const user = {
-    // key: value
-    name: 'Lukaid',
-    age: 29,
-    email: 'dltjddn0115@naver.com'
-}
+// const user = {
+//     // key: value
+//     name: 'Lukaid',
+//     age: 29,
+//     email: 'dltjddn0115@naver.com'
+// }
 
 // const keys = Object.keys(user)
 // console.log(keys)
@@ -177,16 +177,66 @@ const user = {
 // console.log(values)
 
 // 구조 분해 할당
-const { name: lukaid, age, address = 'korea'} = user
+// const { name: lukaid, age, address = 'korea'} = user
 // 객체 데이터에서 내가 원하는 value만 key로 꺼내 묵으면 됨
 
-console.log(`사용자의 이름은 ${lukaid}입니다.`)
-console.log(`${lukaid}의 나이는 ${age}세 입니다.`)
-console.log(`${lukaid}의 이메일 주소는 ${user.email}입니다.`)
-console.log(address)
+// console.log(`사용자의 이름은 ${lukaid}입니다.`)
+// console.log(`${lukaid}의 나이는 ${age}세 입니다.`)
+// console.log(`${lukaid}의 이메일 주소는 ${user.email}입니다.`)
+// console.log(address)
 
 // 객체 데이터 뿐 아니라 배열 데이터에도 사용 가능
 // 배열은 순서를 꼭 지켜야 됨
-const fruits = ['Apple', 'Banana', 'Cherry']
-const [a, b, c, d] = fruits
-console.log(a, b, c, d)
+// const fruits = ['Apple', 'Banana', 'Cherry']
+// const [a, b, c, d] = fruits
+// console.log(a, b, c, d)
+
+// 전개 연산자
+
+// const fruits = ['Apple', 'Banana', 'Cherry', 'Orange']
+// console.log(fruits)
+// console.log(...fruits)
+// console.log('Apple', 'Banana', 'Cherry') 아렇게 전개한 것 처럼 출력
+
+// function toObject(a, b, ...c) {
+//     return {
+//         a: a,
+//         b: b,
+//         c: c
+//     }
+// }
+// 속성의 이름과 변수의 이름이 같으면 하나만 써도 됨
+// const toObject = (a, b, ...c) => ({a, b, ...c})
+
+
+// console.log(toObject(...fruits))
+
+
+
+// 데이터 불변성 (Immuatblility) 한 번 만들어진 메모리는 불변함, 메모리 주소만 재 할당
+// 원시데이터: String, Number, Boolean, undefined, null
+// 참조제이터: Object, Array, Function
+
+// let a = 1
+// let b = 4
+// console.log(a, b, a === b)
+// b = a
+// console.log(a, b, a === b)
+// a = 7
+// console.log(a, b, a === b)
+// let c = 1
+// console.log(b, c, b === c)
+
+// 참조데이터는 생긴게 똑같아도 같이 않을 수 있음
+let a = { k:1 }
+let b = { k:1 }
+console.log(a, b, a === b) // 생긴게 같아도 다른 주소로 할당 되어서 false
+a.k = 7
+b = a
+console.log(a, b, a === b)
+a.k = 2
+console.log(a, b, a === b)
+let c = b
+console.log(a, b, c, a === c)
+a.k = 9
+console.log(a, b, c, a === c)

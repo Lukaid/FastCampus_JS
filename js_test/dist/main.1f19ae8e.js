@@ -233,35 +233,74 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 // const c = '1'
 // const d = '1'
 // console.log(c === d)
-var user = {
-  // key: value
-  name: 'Lukaid',
-  age: 29,
-  email: 'dltjddn0115@naver.com'
-}; // const keys = Object.keys(user)
+// const user = {
+//     // key: value
+//     name: 'Lukaid',
+//     age: 29,
+//     email: 'dltjddn0115@naver.com'
+// }
+// const keys = Object.keys(user)
 // console.log(keys)
 // console.log(user['email'])
 // const values = keys.map(key => user[key])
 // console.log(values)
 // 구조 분해 할당
-
-var lukaid = user.name,
-    age = user.age,
-    _user$address = user.address,
-    address = _user$address === void 0 ? 'korea' : _user$address; // 객체 데이터에서 내가 원하는 value만 key로 꺼내 묵으면 됨
-
-console.log("\uC0AC\uC6A9\uC790\uC758 \uC774\uB984\uC740 ".concat(lukaid, "\uC785\uB2C8\uB2E4."));
-console.log("".concat(lukaid, "\uC758 \uB098\uC774\uB294 ").concat(age, "\uC138 \uC785\uB2C8\uB2E4."));
-console.log("".concat(lukaid, "\uC758 \uC774\uBA54\uC77C \uC8FC\uC18C\uB294 ").concat(user.email, "\uC785\uB2C8\uB2E4."));
-console.log(address); // 객체 데이터 뿐 아니라 배열 데이터에도 사용 가능
+// const { name: lukaid, age, address = 'korea'} = user
+// 객체 데이터에서 내가 원하는 value만 key로 꺼내 묵으면 됨
+// console.log(`사용자의 이름은 ${lukaid}입니다.`)
+// console.log(`${lukaid}의 나이는 ${age}세 입니다.`)
+// console.log(`${lukaid}의 이메일 주소는 ${user.email}입니다.`)
+// console.log(address)
+// 객체 데이터 뿐 아니라 배열 데이터에도 사용 가능
 // 배열은 순서를 꼭 지켜야 됨
+// const fruits = ['Apple', 'Banana', 'Cherry']
+// const [a, b, c, d] = fruits
+// console.log(a, b, c, d)
+// 전개 연산자
+// const fruits = ['Apple', 'Banana', 'Cherry', 'Orange']
+// console.log(fruits)
+// console.log(...fruits)
+// console.log('Apple', 'Banana', 'Cherry') 아렇게 전개한 것 처럼 출력
+// function toObject(a, b, ...c) {
+//     return {
+//         a: a,
+//         b: b,
+//         c: c
+//     }
+// }
+// 속성의 이름과 변수의 이름이 같으면 하나만 써도 됨
+// const toObject = (a, b, ...c) => ({a, b, ...c})
+// console.log(toObject(...fruits))
+// 데이터 불변성 (Immuatblility) 한 번 만들어진 메모리는 불변함, 메모리 주소만 재 할당
+// 원시데이터: String, Number, Boolean, undefined, null
+// 참조제이터: Object, Array, Function
+// let a = 1
+// let b = 4
+// console.log(a, b, a === b)
+// b = a
+// console.log(a, b, a === b)
+// a = 7
+// console.log(a, b, a === b)
+// let c = 1
+// console.log(b, c, b === c)
+// 참조데이터는 생긴게 똑같아도 같이 않을 수 있음
+var a = {
+  k: 1
+};
+var b = {
+  k: 1
+};
+console.log(a, b, a === b); // 생긴게 같아도 다른 주소로 할당 되어서 false
 
-var fruits = ['Apple', 'Banana', 'Cherry'];
-var a = fruits[0],
-    b = fruits[1],
-    c = fruits[2],
-    d = fruits[3];
-console.log(a, b, c, d);
+a.k = 7;
+b = a;
+console.log(a, b, a === b);
+a.k = 2;
+console.log(a, b, a === b);
+var c = b;
+console.log(a, b, c, a === c);
+a.k = 9;
+console.log(a, b, c, a === c);
 },{}],"../../.nvm/versions/node/v14.17.1/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -290,7 +329,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65387" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51270" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
