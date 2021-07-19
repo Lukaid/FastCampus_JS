@@ -227,16 +227,46 @@
 // let c = 1
 // console.log(b, c, b === c)
 
-// 참조데이터는 생긴게 똑같아도 같이 않을 수 있음
-let a = { k:1 }
-let b = { k:1 }
-console.log(a, b, a === b) // 생긴게 같아도 다른 주소로 할당 되어서 false
-a.k = 7
-b = a
-console.log(a, b, a === b)
-a.k = 2
-console.log(a, b, a === b)
-let c = b
-console.log(a, b, c, a === c)
-a.k = 9
-console.log(a, b, c, a === c)
+// // 참조데이터는 생긴게 똑같아도 같이 않을 수 있음
+// let a = { k:1 }
+// let b = { k:1 }
+// console.log(a, b, a === b) // 생긴게 같아도 다른 주소로 할당 되어서 false
+// a.k = 7
+// b = a
+// console.log(a, b, a === b)
+// a.k = 2
+// console.log(a, b, a === b)
+// let c = b
+// console.log(a, b, c, a === c)
+// a.k = 9
+// console.log(a, b, c, a === c)
+
+import _ from 'lodash'
+
+const user = {
+    // key: value
+    name: 'Lukaid',
+    age: 29,
+    emails: ['dltjddn0115@naver.com']
+}
+
+// const copyUser = user // 메모리 주소 복사
+// const copyUser = Object.assign({}, user) // 대상객체, 출처객체 새로운 객체 데이터를 새로운 메모리 주소에 할당
+// const copyUser = {...user} // 얘도 마찬가자로 메모리 주소 새로 할당하고 다시 객체 정의, 얕은복사
+const copyUser = _.cloneDeep(user) // 깊은 복사, 이게 더 안전함
+
+console.log(copyUser === user)
+
+
+user.age = 22
+console.log('user', user)
+console.log('copyUser', copyUser)
+
+console.log('---------')
+console.log('---------')
+
+user.emails.push('test@test.com') // 배열은 또 참조형 데이터니까 같은 메모리 주소를 공유하게 됨....
+console.log(user.emails === copyUser.emails)
+
+console.log('user', user)
+console.log('copyUser', copyUser)
