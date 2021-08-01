@@ -76,3 +76,37 @@ function leakingAny(obj: any) {
 
 const c = leakingAny({num:0})
 // c.indexOf("0")
+
+declare const maybe: unknown
+
+// const aNumber: number = maybe
+
+if (maybe === true) {
+  const aBoolean: boolean = maybe
+  
+  // const aString: string = maybe
+}
+
+if (typeof maybe === 'string') {
+  // const aBoolean: boolean = maybe
+  
+  const aString: string = maybe
+}
+
+function error(message:string): never {
+  throw new Error(message)
+}
+
+function fail() {
+  return error("failed")
+}
+
+function infiniteLoop(): never {
+  while(true) {}
+}
+
+let a: string =  "hello"
+
+if (typeof a !== 'string') {
+  a
+}
