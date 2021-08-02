@@ -3,6 +3,9 @@ const ajax = new XMLHttpRequest()
 const content = document.createElement('div')
 const NEWS_URL = 'https://api.hnpwa.com/v0/news/1.json'
 const CONTENT_URL = 'https://api.hnpwa.com/v0/item/@id.json'
+const store = {
+  currentPage: 1,
+}
 
 function getData (url) {
   ajax.open('GET', url, false)
@@ -10,47 +13,58 @@ function getData (url) {
   return JSON.parse(ajax.response)
 }
 
-// ajax.open('GET', NEWS_URL, false)
-// ajax.send()
-// const newsFeed = JSON.parse(ajax.response)
+function newsFeed() {
+  const newsFeed = getData(NEWS_URL)
+  const newsList = []
 
-const newsFeed = getData(NEWS_URL)
-const ul = document.createElement('ul')
-
-window.addEventListener('hashchange', function () {
-  const id = location.hash.substr(1)
-
-  // ajax.open('GET', CONTENT_URL.replace('@id', id), false)
-  // ajax.send()
-  // const newsContent = JSON.parse(ajax.response)
-  const newsContent = getData(CONTENT_URL.replace('@id', id))
-
-  const title = document.createElement('h1')
-  title.innerHTML = newsContent.title
-  content.appendChild(title)
-})
-
-for (let i = 0; i < 10; i++) {
-  const div = document.createElement('div')
-  // const li = document.createElement('li')
-  // const a = document.createElement('a')
+  newsList.push('<ul>')
+  for (let i = 0; i < 10; i++) {
+    const div = document.createElement('div')
+    newsList.push(`
+      <li>
+        <a href = "#${newsFeed[i].id}">
+          ${newsFeed[i].title} (${newsFeed[i].comments_count})
+        </a>
+      </li>
+    `)
+  }
+  newsList.push('</ul>')
   
-  // a.href = `#${newsFeed[i].id}`
-  // a.innerHTML = `${newsFeed[i].title} (${newsFeed[i].comments_count})`
+  newsList.push(`
+    <div>
+      <a href="#/${store.currentPage - 1}">이전 페이지</a>
+      <a href="#/${store.currentPage + 1}">다음 페이지</a>
+    </div>
+  `)
 
-  // li.appendChild(a)
-  // ul.appendChild(li)
-
-  div.innerHTML = `
-    <li>
-      <a href = "#${newsFeed[i].id}">
-        ${newsFeed[i].title} (${newsFeed[i].comments_count})
-      </a>
-    </li>
-  `
-  // ul.appendChild(div.children[0])
-  ul.appendChild(div.firstElementChild)
+  container.innerHTML = newsList.join('')
 }
 
-container.appendChild(ul)
-container.appendChild(content)
+function newsDetail() {
+  const id = location.hash.substr(1)
+
+  const newsContent = getData(CONTENT_URL.replace('@id', id))
+  const title = document.createElement('h1')
+
+  container.innerHTML = `
+    <h1>${newsContent.title}</h1>
+
+    <div>
+      <a href="#">목록으로</a>
+    </div>
+  `
+}
+
+function router() {
+  const routePath = location.hash
+
+  if (routePath === '') {
+    newsFeed()
+  } else {
+    newsDetail()
+  }
+}
+
+window.addEventListener('hashchange', router)
+
+router()
