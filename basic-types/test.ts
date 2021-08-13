@@ -114,3 +114,13 @@ if (typeof a !== 'string') {
 type Indexable<T> = T extends string ? T & { [index: string]: any } : never
 
 // const b: Indexable<{}> = ''
+
+
+
+function returnVoid(message: string): void {
+  console.log(message)
+
+  return undefined
+}
+
+const r: void = returnVoid("리턴이 없다...!")
